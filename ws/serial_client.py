@@ -30,11 +30,11 @@ class SerialClientProtocol(LineReceiver):
                     cmd = values[0].decode()
                     data_dict = {"data_type": cmd}
                     if values[0] in [b"vel", b"pos", b"lap"] :
-                        if len(values) > 1:
+                        if len(values) >= 1:
                             data_dict[cmd + "_1"] = int.from_bytes(values[1], "big") if values[1] else 0
                         else:
                             data_dict[cmd + "_1"] = 0
-                        if len(values) > 2:
+                        if len(values) >= 2:
                             data_dict[cmd + "_2"] = int.from_bytes(values[2], "big")
                         else:
                             data_dict[cmd + "_2"] = 0
@@ -42,7 +42,7 @@ class SerialClientProtocol(LineReceiver):
                         data_dict["goal_lap"] = int.from_bytes(values[1], "big")
                     elif values[0] == b"play":
                         if len(values) > 1:
-                            data_dict["status"] = True if values[1] == b"\x01" else False
+                            data_dict["status"] = True if values[1] == b"\x00\x01" else False
                         else:
                             data_dict["status"] = False
                     elif values[0] == b"win":
