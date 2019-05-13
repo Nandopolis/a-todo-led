@@ -17,4 +17,6 @@ pip install wheel
 pip install -r requirements.txt
 
 ## running
-PYTHONPATH=$PWD twistd -n ws -p {serial_port}
+(replace "/dev/ttyUSB0" with the serial port)
+
+PYTHONPATH=$PWD twistd -n ws -p /dev/ttyUSB0
