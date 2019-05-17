@@ -41,7 +41,7 @@ class WsServerProtocol(WebSocketServerProtocol):
                     self.sendClose()
                 else:
                     if data["data_type"] == "counter":
-                        self.log.debug("serial: {s}", s=serial)
+                        self.log.debug("serial tx: s")
                         serial.sendMessage("s")
             except Exception as e:
                 self.log.error("error: {e}", e=e)
@@ -51,4 +51,3 @@ class WsServerProtocol(WebSocketServerProtocol):
         self.log.debug("WebSocket connection closed: {0}".format(reason))
         if self == self.factory.client:
             self.factory.client = None
-
