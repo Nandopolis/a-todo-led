@@ -11,7 +11,7 @@ from ws import ws_factory, serial
 
 class Options(usage.Options):
     optParameters = [
-        ["port", "p", u'/dev/ttyACM0', "serial port"],
+        ["port", "p", u'/dev/ttyS3', "serial port"],
         ["baudrate", "b", 115200, "serial baudrate"],
     ]
 
