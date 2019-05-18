@@ -22,7 +22,7 @@ class SerialClientProtocol(LineReceiver):
                 else:
                     self.log.debug("serial tx: k")
                     self.sendLine(b"k")
-                    data_json = json.dumps({"data_type": "counter"})
+                    data_json = json.dumps([{"data_type": "counter"}])
                     self.log.debug("sending data to ws: {data}", data=data_json)
                     ws_factory.client.sendMessage(data_json.encode("utf8"))
             else:
